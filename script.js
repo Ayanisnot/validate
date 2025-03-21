@@ -1,9 +1,6 @@
-function validateform() {
+let today = new Date();
+let day = today.getDate();
+let month = today.getMonth() + 1;
+let year = today.getFullYear();
 
- var x = document.forms["myname"]["fname"].value;
- if ( x == "") {
-
-   alert("name must be filled out");
-   return false;
- } else document.write("name submitted");
-}
+document.getElementById("date").innerHTML = day + "-" + month + "-" + year
