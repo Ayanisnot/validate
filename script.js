@@ -1,20 +1,21 @@
-let numbers = [5, 12, 9, 94];
-function myfunction(num)  {
-    return num * 50;
+var myForm = document.getElementById("myForm");
+var myInput = document.getElementById("myInput");
+var myItem = document.getElementById("myItem");
+
+myForm.addEventListener("submit", 
+function(event){
+	event.preventDefault()
+	createItem(myInput.value)
+})
+
+function createItem(inputItems){
+	var items = `<li>${inputItems}
+	<button onclick="deleteElement(this)">Delete</button> </li>`
+	myItem.insertAdjacentHTML("beforeend", items)
+	myInput.value = ""
+	myInput.focus()
 }
-   
-var newarray = numbers.map(myfunction);
-document.getElementById("product_value").innerHTML = "The mapped values are:" + newarray;
 
-
-
-function ascending() {
-    newarray.sort(function(a, b){return a - b});
-    document.getElementById("product_value").innerHTML = "The ascending order of mapped values are:" + newarray;
-
-}
-function descending() {
- newarray.sort(function(a, b){return b - a});
- document.getElementById("product_value").innerHTML = "The descending order of mapped values are:" + newarray;
-
+function deleteElement(ElementToDelete){
+	ElementToDelete.parentElement.remove()
 }
